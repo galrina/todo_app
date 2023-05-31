@@ -19,12 +19,7 @@ class _HomeState extends State<Home> {
     await Firebase.initializeApp();
   }
 
- /* void initState() {
-    super.initState();
-    initFirebase();
 
-    todoList.addAll(['Buy milk', 'Wash dishes', 'Walk the bear']);
-  }*/
 
   void _menuOpen() {
     Navigator.of(context).push(
