@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/home.dart';
-import 'package:todo_app/pages/main-screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:todo_app/pages/login-page.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
 
-
-void main() => runApp(MaterialApp(
-  theme: ThemeData(
-    primaryColor: Colors.orange,
-  ),
-  initialRoute: '/',
-  routes: {
-    '/': (context) => MainScreen(),
-    '/todo': (contect) => Home(),
-  },
-));
-
+  runApp(MaterialApp(
+    theme: ThemeData(
+      primaryColor: Colors.deepOrangeAccent,
+    ),
+    initialRoute: '/',
+    routes: {
+      '/': (context) => LoginPage(),
+      '/todo': (context) => Home(),
+    },
+  ));
+}
