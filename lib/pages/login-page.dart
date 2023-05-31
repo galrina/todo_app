@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/pages/home.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io';
+import 'dart:async';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:todo_app/service/auth.dart';
+
+import '../service/auth.dart';
+import 'home.dart';
+
+final AuthService _auth = AuthService();
+
 
 
 class LoginPage extends StatelessWidget {
@@ -13,17 +20,26 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[900],
         appBar: AppBar(
-        title: Text('To-Do List'),
-    centerTitle: true,
-    ),
-    body: Column(
-      children: [
-        ElevatedButton(onPressed: () {
-          Navigator.pushReplacementNamed(context, '/todo');
-          
-        }, child: Text('Login'))
-      ],
-    ) 
+          title: Text('To-Do List'),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: ElevatedButton(
+            child: Text('Sign in anonymously'),
+            onPressed: () async {
+              User? user = await _auth.signInAnonymously();
+              if (user != null) {
+                Navigator.pushNamed(context, '/todo');
+
+              } else {
+                print("hello");
+                // Show an error message
+              }
+            },
+          ),
+        ),
     );
   }
 }
+
+
