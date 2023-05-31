@@ -5,7 +5,7 @@ import 'package:todo_app/pages/login-page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   runApp(MaterialApp(
     theme: ThemeData(
